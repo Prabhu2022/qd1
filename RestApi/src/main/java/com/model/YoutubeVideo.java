@@ -9,11 +9,14 @@ import javax.persistence.Table;
 
 @Entity
 @Table (name="youtube")
-public class Video {
+public class YoutubeVideo {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+	
+	@Column(name = "name")
+	private String name;
 	
 	@Column(name = "title")
 	private String title;
@@ -24,17 +27,17 @@ public class Video {
 	@Column(name = "published")
 	private boolean published;
 	
-	public Video() {
+	public YoutubeVideo() {
 		super();
 	}
 	
 	
-	public Video(String title, String description,boolean published) {
+	public YoutubeVideo(String name,String title, String description) {
 		super();
-		
+		this.name = name;
 		this.title = title;
 		this.description = description;
-		this.published = published;
+		//this.published = published;
 	}
 
 
@@ -46,6 +49,17 @@ public class Video {
 	public void setId(Long id) {
 		this.id = id;
 	}
+
+
+	public String getName() {
+		return name;
+	}
+
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 
 	public String getTitle() {
 		return title;

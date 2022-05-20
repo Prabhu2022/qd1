@@ -1,4 +1,4 @@
-package com.model;
+package com;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,11 +9,14 @@ import javax.persistence.Table;
 
 @Entity
 @Table (name="youtube")
-public class Video {
+public class YoutubeVideo {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+	
+	@Column(name = "name")
+	private String name;
 	
 	@Column(name = "title")
 	private String title;
@@ -21,31 +24,30 @@ public class Video {
 	@Column(name = "description")
 	private String description;
 	
-	@Column(name = "published")
-	private boolean published;
 	
-	public Video() {
+	public YoutubeVideo() {
 		super();
 	}
 	
 	
-	public Video(String title, String description,boolean published) {
+	public YoutubeVideo(String name,String title, String description) {
 		super();
-		
+		this.name = name;
 		this.title = title;
 		this.description = description;
-		this.published = published;
+		
 	}
 
 
-	public Long getId() {
-		return id;
+	public String getName() {
+		return name;
 	}
 
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setName(String name) {
+		this.name = name;
 	}
+
 
 	public String getTitle() {
 		return title;
@@ -67,18 +69,8 @@ public class Video {
 	}
 
 
-	public boolean isPublished() {
-		return published;
-	}
-
-
-	public void setPublished(boolean published) {
-		this.published = published;
-	}
-
-
 	@Override
 	public String toString() {
-		return "Video [id=" + id + ", title=" + title + ", desc=" + description +", published=" + published +"]";
+		return "YoutubeVideo [name=" + name + ", title=" + title + ", desc=" + description +"]";
 	}
 }

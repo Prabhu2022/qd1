@@ -27,16 +27,6 @@ public class ApiController {
 	@Autowired
 	private VideoRepo videoRepo;
 	
-	@Autowired
-	private Video video;
-	
-	@RequestMapping("")
-	public String showIndexPage1()
-	{
-		
-		return "index";
-	}
-	
 	 @GetMapping("/videos")
 	  public ResponseEntity<List<Video>> getAllVideos(@RequestParam(required = false) String title) {
 	    try {
@@ -67,7 +57,7 @@ public class ApiController {
 	 @PostMapping("/videos")
 	  public ResponseEntity<Video> createVideo(@RequestBody Video _video) {
 	    try {
-	    	
+	    	Video video =new Video();
 	    	videoRepo.save(new Video(video.getTitle(), video.getDescription(), false));
 	      return new ResponseEntity<>(_video, HttpStatus.CREATED);
 	    } catch (Exception e) {
