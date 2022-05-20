@@ -13,11 +13,8 @@ import javax.persistence.Table;
 public class YoutubeVideo {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
-	
-	@Column(name = "name")
-	private String name;
+	//@GeneratedValue(strategy = GenerationType.AUTO)
+	private String id;
 	
 	@Column(name = "title")
 	private String title;
@@ -25,30 +22,26 @@ public class YoutubeVideo {
 	@Column(name = "description")
 	private String description;
 	
-	//@Lob
-	//private byte[] data;
-	
 	public YoutubeVideo() {
 		super();
 	}
 	
 	
-	public YoutubeVideo(String name,String title, String description) {
+	public YoutubeVideo(String id,String title, String description) {
 		super();
-		this.name = name;
+		this.id = id;
 		this.title = title;
 		this.description = description;
-		//this.data = data;
 	}
 
 
-	public String getName() {
-		return name;
+	public String getId() {
+		return id;
 	}
 
 
-	public void setName(String name) {
-		this.name = name;
+	public void setId(String id) {
+		this.id = id;
 	}
 
 
@@ -72,9 +65,9 @@ public class YoutubeVideo {
 	}
 
 	
-
+/*
 	@Override
 	public String toString() {
-		return "YoutubeVideo [id=" + id + ",name=" + name + ", title=" + title + ", desc=" + description +"]";
-	}
+		return "YoutubeVideo [id=" + id + ", title=" + title + ", desc=" + description +"]";
+	} */
 }
