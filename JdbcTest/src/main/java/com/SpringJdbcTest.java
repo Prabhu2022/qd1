@@ -55,7 +55,7 @@ public class SpringJdbcTest {
 				return new Employee(id,name,dept,place);
 			}
 		};
-		;
+		
 		List<Employee> emp=template.query(sql3, rowMapper);
 		for(Employee em:emp)
 		{
