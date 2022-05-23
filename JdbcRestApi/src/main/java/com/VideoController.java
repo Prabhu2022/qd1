@@ -26,7 +26,7 @@ public class VideoController {
 	private YoutubeRepo youRepo;
 	
 	@GetMapping("/videos")
-	  public ResponseEntity<List<YoutubeVideo>> getAllTutorials(@RequestParam(required = false) String title) {
+	  public ResponseEntity<List<YoutubeVideo>> getAllVideos(@RequestParam(required = false) String title) {
 	    try {
 	      List<YoutubeVideo> youVideo = new ArrayList<YoutubeVideo>();
 	      if (title == null)
@@ -42,7 +42,7 @@ public class VideoController {
 	    }
 	  }
 	  @GetMapping("/videos/{id}")
-	  public ResponseEntity<YoutubeVideo> getTutorialById(@PathVariable("id") long id) {
+	  public ResponseEntity<YoutubeVideo> getVideolById(@PathVariable("id") long id) {
 		  YoutubeVideo youVideo = youRepo.findById(id);
 	    if (youVideo != null) {
 	      return new ResponseEntity<>(youVideo, HttpStatus.OK);
@@ -51,7 +51,7 @@ public class VideoController {
 	    }
 	  }
 	  @PostMapping("/videos")
-	  public ResponseEntity<String> createTutorial(@RequestBody YoutubeVideo youVideo) {
+	  public ResponseEntity<String> createVideo(@RequestBody YoutubeVideo youVideo) {
 	    try {
 	    	youRepo.save(new YoutubeVideo(youVideo.getTitle(), youVideo.getDescription(), false));
 	      return new ResponseEntity<>("Video was created successfully.", HttpStatus.CREATED);
@@ -60,7 +60,7 @@ public class VideoController {
 	    }
 	  }
 	  @PutMapping("/videos/{id}")
-	  public ResponseEntity<String> updateTutorial(@PathVariable("id") long id, @RequestBody YoutubeVideo youVideo) {
+	  public ResponseEntity<String> updateVideo(@PathVariable("id") long id, @RequestBody YoutubeVideo youVideo) {
 		  YoutubeVideo _youVideo = youRepo.findById(id);
 	    if (_youVideo != null) {
 	    	_youVideo.setId(id);
