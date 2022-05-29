@@ -35,6 +35,16 @@ public class Product {
 	}
 
 
+	public Product(long id, String title, String vendor, String product_type, Date created_at) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.vendor = vendor;
+		this.product_type = product_type;
+		this.created_at = created_at;
+	}
+
+
 	public long getId() {
 		
 		//System.out.println("prabhu "+ id);
@@ -49,7 +59,7 @@ public class Product {
 
 	public String getTitle() {
 		
-		System.out.println("prabhu title " +title);
+		//System.out.println("prabhu title " +title);
 		return title;
 	}
 
