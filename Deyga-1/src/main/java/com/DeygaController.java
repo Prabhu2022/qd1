@@ -99,7 +99,7 @@ public class DeygaController {
 	    	
 	      return new ResponseEntity<>("Products was updated successfully.", HttpStatus.OK);
 	    } else {
-	      return new ResponseEntity<>("Cannot find Video with id=" + id, HttpStatus.NOT_FOUND);
+	      return new ResponseEntity<>("Cannot find Product with id=" + id, HttpStatus.NOT_FOUND);
 	    }
 	  }
 
