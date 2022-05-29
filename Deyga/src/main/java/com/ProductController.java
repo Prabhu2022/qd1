@@ -18,7 +18,7 @@ public class ProductController
 	@GetMapping("addproducts")
 	public ResponseEntity<Product> storeProDetails(Product product)
 	{
-		return ProductService.storeProDetails(product);
+		return null; 
 		
 	}
 }

@@ -4,23 +4,22 @@ package com;
 import java.io.IOException;
 
 import org.springframework.stereotype.Service;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-@Service
+
 public class JsonParsingService implements ParsingService {
 
-
+	private Products products;
+	
 	@Override
-	public Object parse(String result) {
+	public Object parse(String result)
+	{
 		ObjectMapper objMap= new ObjectMapper();
+				
 		
-		Products products =new Products();
-		
-		//Deyga shop = new Deyga();
 				
 		try {
-			products=objMap.readValue(result, Products.class);
+			 products=objMap.readValue(result, Products.class); //error line
 			
 		} catch (IOException e) {
 			
@@ -28,7 +27,7 @@ public class JsonParsingService implements ParsingService {
 		}
 				
 	
-		System.out.println(products.getProducts());
+		
 		
 		return products;
 	}
