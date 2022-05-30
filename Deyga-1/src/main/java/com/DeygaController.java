@@ -148,13 +148,4 @@ public class DeygaController {
 		}
 	}
 	
-	@GetMapping("/products/{title}")
-	public ResponseEntity<Product> findByTitleContaining(@PathVariable("title") String title) {
-		ResponseEntity<Product> product = (ResponseEntity<Product>) proRepo.findByTitleContaining(title);
-		if (product != null) {
-			return product;
-		} else {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		}
-	} 
 }
