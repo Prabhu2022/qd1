@@ -58,14 +58,7 @@ public class ProductRepo {
 
 			System.out.println(ps);
 			
-			System.out.println(product.getId());
-			System.out.println(product.getTitle());
 			
-			ps.setLong(1, product.getId());
-			ps.setString(2, product.getTitle());
-			ps.setString(3,product.getVendor());
-			ps.setString(4,product.getProduct_type());
-			ps.setDate(5,(Date) product.getCreated_at());
 
 			System.out.println(ps);
 			

@@ -16,15 +16,16 @@ public class ProductRepo {
 
 	public int save(Product product) {
 
-		//System.out.println("prabhu save" + product.getId() + product.getTitle());
-
 		return jdbcTemplate.update("INSERT INTO product (id,title,vendor,product_type,created_at) VALUES(?,?,?,?,?)",
 				new Object[] { product.getId(), product.getTitle(), product.getVendor(), product.getProduct_type(),
 						product.getCreated_at() });
 	}
 
-	public int update(Product product) {
-		return jdbcTemplate.update("UPDATE product SET title=?, vendor=?,product_type=?,created_at=? WHERE id=?", 
+	public int update(Product product) { 
+		
+		System.out.println("prodao"+product.getTitle()+ product.getVendor());
+		
+		return jdbcTemplate.update("UPDATE product SET title=?, vendor=?, product_type=?, created_at=? WHERE id=?", 
 				new Object[] { product.getId(),
 				product.getTitle(), product.getVendor(), product.getProduct_type(), product.getCreated_at() });
 	}
@@ -33,7 +34,9 @@ public class ProductRepo {
 		try {
 			Product product = jdbcTemplate.queryForObject("SELECT * FROM product WHERE id=?",
 					BeanPropertyRowMapper.newInstance(Product.class), id);
-			System.out.println("Single product"+product);
+			
+			System.out.println("prodao"+ product);
+			
 			return product;
 		} catch (IncorrectResultSizeDataAccessException e) {
 			return null;
@@ -56,9 +59,6 @@ public class ProductRepo {
 
 	public int deleteAll() {
 		return jdbcTemplate.update("DELETE from product");
-	}
-	public int viewDbData() {
-		return jdbcTemplate.update("SELECT from product");
 	}
 	
 }
