@@ -3,6 +3,7 @@ package com;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -19,9 +20,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-@Controller
+@RestController
 public class DeygaController {
 
 	@Autowired
@@ -148,4 +150,12 @@ public class DeygaController {
 		}
 	}
 	
+	
+	@GetMapping("/products/count")
+	public int totalproductsCount() {
+		int count= proRepo.totalproductsCount();
+		
+		System.out.println(count);
+		return count;
+	}
 }

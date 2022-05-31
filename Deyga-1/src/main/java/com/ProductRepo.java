@@ -1,6 +1,7 @@
 package com;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.IncorrectResultSizeDataAccessException;
@@ -26,8 +27,8 @@ public class ProductRepo {
 		System.out.println("prodao"+product.getTitle()+ product.getVendor());
 		
 		return jdbcTemplate.update("UPDATE product SET title=?, vendor=?, product_type=?, created_at=? WHERE id=?", 
-				new Object[] { product.getId(),
-				product.getTitle(), product.getVendor(), product.getProduct_type(), product.getCreated_at() });
+				new Object[] {product.getId(),product.getTitle(), 
+						product.getVendor(), product.getProduct_type(), product.getCreated_at() });
 	}
 
 	public Product findById(Long id) {
@@ -53,7 +54,7 @@ public class ProductRepo {
 	}
 
 	public List<Product> findByTitleContaining(String title) {
-		String q = "SELECT * from videos WHERE title ILIKE '%" + title + "%'";
+		String q = "SELECT * from products WHERE title ILIKE '%" + title + "%'";
 		return jdbcTemplate.query(q, BeanPropertyRowMapper.newInstance(Product.class));
 	}
 
@@ -61,4 +62,13 @@ public class ProductRepo {
 		return jdbcTemplate.update("DELETE from product");
 	}
 	
+	public int totalproductsCount() {
+		String sql = "select count(*) from product";
+		
+		int count= jdbcTemplate.queryForObject(sql,Integer.class);
+		 
+		System.out.println(count);
+		 return count;
+	}
+
 }
