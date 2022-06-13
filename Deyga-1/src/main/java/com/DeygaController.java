@@ -60,7 +60,7 @@ public class DeygaController {
 	}
 
 	@GetMapping("/products")
-	  public ResponseEntity<List<Product>> getAllVideos(@RequestParam(required = false) String title) {
+	  public ResponseEntity<List<Product>> getAllProducts(@RequestParam(required = false) String title) {
 	    try {
 	      List<Product> product = new ArrayList<Product>();
 	      if (title == null)
